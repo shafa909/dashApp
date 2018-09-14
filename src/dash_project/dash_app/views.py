@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
-# Create your views here.
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -12,13 +11,14 @@ from .models import Company
 
 
 def company_article_list(request):
-	if request.method == 'POST':
-		form = HomeForm(request.POST)
-		if form.is_valid():
-			text = form.cleaned_data['Query']
-	form =HomeForm()
-	args = {'form' :form,  }
-	return render(request,"dash/home.html", args)
+    a = Company.objects.filter()
+    if request.method == 'POST':
+        form = HomeForm(request.POST)
+        if form.is_valid():
+            text = form.cleaned_data['Query']
+    form =HomeForm()
+    args = {'form' :form, 'a':a }
+    return render(request,"dash/home.html", args)
 
 
 

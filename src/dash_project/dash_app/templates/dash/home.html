@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<title></title>
-
+<style type="text/css">
+	.table-bordered {
+    border: 1px solid #dee2e6;
+    width: 50%;
+    height: 50%;
+    font-size: 18px; 	
+}
+textarea {
+    height: 55px;
+    overflow: auto;
+    resize: vertical;
+    width: 60%;
+    height: -12%;
+}
+</style>
 </head>
 <body>
-<h1> Please Enter the Query  <h1>
-	          <form method="POST">
-               {% csrf_token %}
-	          <h1> {{form}} <h1>
-          <button type="submit">Submit</button> 
-          <h2> Entered Query : {{ text }} </h2>
-
-
-
+	<h2> Please Enter the Query : <h2>
+	<form method="POST">
+    	{% csrf_token %}
+		<h2> {{form}} <h2>
+    	<button class="btn btn-default" type="submit">Submit</button>
+    </form>
+    <h2> Query Result:</h2>
+<table class="table table-bordered" width="50%">
+	<tbody>
+    <tr>
+        <th>Name</th>
+        <th>Net_worth</th>
+    </tr>
+    {% for i in a %}
+    <tr> 
+        <td>{{ i.name }}</td>
+        <td>{{ i.net_worth }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 	<div class="row">
         <div id="articles" style="width:1400px;height:800px;"></div>
@@ -23,7 +49,6 @@
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
          
-
 
 
 	<script type="text/javascript">
